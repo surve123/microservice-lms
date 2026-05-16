@@ -6938,3 +6938,4 @@ Caused by: java.io.IOException: The pipe is being closed
 	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:203)
 	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
 	... 15 common frames omitted
+2026-05-15 21:47:28,999 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.

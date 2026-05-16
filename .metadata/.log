@@ -8408,3 +8408,6 @@ java.io.IOException: Process timed-out and it was attempted to forcefully termin
 	at org.eclipse.ui.internal.WindowsDefenderConfigurator.lambda$0(WindowsDefenderConfigurator.java:106)
 	at org.eclipse.core.runtime.jobs.Job$2.run(Job.java:187)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2026-05-16 06:09:17.934
+!MESSAGE DelegatingStreamConnectionProvider - Stopping Boot LS
