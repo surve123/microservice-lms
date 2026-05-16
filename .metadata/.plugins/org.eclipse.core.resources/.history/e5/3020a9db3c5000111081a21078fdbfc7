@@ -1,0 +1,41 @@
+package com.lms.service;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.lms.client.UserClient;
+import com.lms.controller.CourseController;
+import com.lms.dto.UserDTO;
+import com.lms.repository.CourseRepository;
+
+@Service
+public class CourseService {
+	
+	@Autowired
+    private CourseRepository courseRepository;
+
+    @Autowired
+    private UserClient userClient;
+
+    public CourseController saveCourse(CourseController course) {
+        return courseRepository.save(course);
+    }
+
+    public List<CourseController> getAllCourses() {
+        return courseRepository.findAll();
+    }
+
+    // This method calls users-micro to get user details
+    public Map<String, Object> getCourseWithUser(Long courseId) {
+        CourseController course = courseRepository.findById(courseId).orElseThrow();
+        UserDTO user = userClient.getUserById(course.getUserId()); // HTTP call to users-micro
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("course", course);
+        response.put("user", user);
+        return response;
+    }
+
+}

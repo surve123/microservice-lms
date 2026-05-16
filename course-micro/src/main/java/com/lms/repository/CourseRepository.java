@@ -1,0 +1,13 @@
+package com.lms.repository;
+
+import org.apache.catalina.User; 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.lms.entity.Course;
+
+public interface CourseRepository extends JpaRepository<Course, Long> {
+
+	Course save(Course course);
+
+
+}

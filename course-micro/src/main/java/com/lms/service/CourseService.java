@@ -1,0 +1,49 @@
+package com.lms.service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.catalina.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.lms.client.UserClient;
+import com.lms.controller.CourseController;
+import com.lms.dto.UserDTO;
+import com.lms.entity.Course;
+import com.lms.repository.CourseRepository;
+
+@Service
+public class CourseService {
+	
+	@Autowired
+    private CourseRepository courseRepository;
+
+    @Autowired
+    private UserClient userClient;
+
+    public Course saveCourse(Course course) {
+		return courseRepository.save(course);
+    	
+     
+    }
+
+	public List<Course> getAllCourses() {
+		// TODO Auto-generated method stub
+		return courseRepository.findAll();
+	}
+
+
+
+	public Map<String, Object> getCourseWithUser(Long id) {
+	    Course course = courseRepository.findById(id).orElseThrow();
+	    UserDTO user = userClient.getUserById(course.getUserId());
+
+	    Map<String, Object> response = new HashMap<>();
+	    response.put("course", course);
+	    response.put("user", user);
+	    return response;
+	}
+
+}

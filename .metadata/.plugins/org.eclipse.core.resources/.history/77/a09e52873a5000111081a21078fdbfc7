@@ -1,0 +1,13 @@
+package com.lms.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.lms.client.UserClient;
+import com.lms.controller.CourseController;
+import com.lms.repository.CourseRepository;
+
+@Service
+public class CourseService {
+
+   

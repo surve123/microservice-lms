@@ -1,0 +1,43 @@
+package com.lms.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.catalina.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.lms.entity.Course;
+import com.lms.service.CourseService;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class CourseController {
+
+	 @Autowired
+	    private CourseService courseService;
+
+	    @PostMapping
+	    public Course saveCourse(@RequestBody Course course) {
+	        return courseService.saveCourse(course);
+	    }
+
+	    @GetMapping
+	    public List<User> getAllCourses() {
+	        return courseService.getAllCourses();
+	    }
+
+	    // This endpoint returns course + user data from users-micro
+	    @GetMapping("/{id}/with-user")
+	    public Map<String, Object> getCourseWithUser(@PathVariable Long id) {
+	        return courseService.getCourseWithUser(id);
+	    }
+	}
+

@@ -1,0 +1,32 @@
+package com.lms.service;
+
+import java.util.Map; 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.lms.client.UserClient;
+import com.lms.controller.CourseController;
+import com.lms.dto.UserDTO;
+import com.lms.entity.Course;
+import com.lms.repository.CourseRepository;
+
+@Service
+public class CourseService {
+	
+	@Autowired
+    private CourseRepository courseRepository;
+
+    @Autowired
+    private UserClient userClient;
+
+    public Course saveCourse(Course course) {
+		return courseRepository.save(course);
+    	
+     
+    }
+
+
+   
+
+}
